@@ -1,0 +1,30 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer base {
+
+    #app ul,
+    #app ol {
+        list-style: revert;
+        margin: 10px 0;
+        padding: 0 0 0 20px;
+    }
+
+    #app li {
+        margin: 10px 0;
+    }
+
+    #app a {
+        color: revert;
+        text-decoration: revert;
+    }
+}
+
+/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,700&display=swap"); */
+
+#app div {
+    line-height: 1;
+}
