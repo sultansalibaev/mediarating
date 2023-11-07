@@ -7,15 +7,17 @@
             :style="{ minWidth: minWidth+'px' }"
         >
             <span
+                :class="{'mt-[-15px]': report_loading}"
                 class="flex items-center w-full h-full font-semibold whitespace-nowrap select-none"
                 style="padding-left: 8px;letter-spacing: .8px;"
             >{{ list_name != '' ? list_name : input }}</span>
 
             <i class="fa-solid fa-angle-down transition-all" style="margin-left:9px;margin-right: 6px;height:12px;" @click.stop="toggle_prompt_list_modal()" :class="{
-                'rotate-x-180': list_modal == modal_name
+                'rotate-x-180': list_modal == modal_name,
+                'mt-[-15px]': report_loading
             }"></i>
         </div>
-        <div class="absolute top-full right-0 left-0 transition-all select-options" :style="{
+        <div class="absolute top-full right-0 left-0 transition-all select-options" v-if="!(report_loading === true)" :style="{
                 height: list_modal == modal_name ? '' : '0px',
             }">
             <div class="flex flex-col select-none select-options-styles scrollbar" style="max-height: 200px;">
@@ -69,6 +71,11 @@ export default {
         list_modal: {
             type: Boolean,
             required: true,
+        },
+        report_loading: {
+            type: Boolean,
+            required: false,
+            default: undefined
         },
         list_name: {
             type: String,

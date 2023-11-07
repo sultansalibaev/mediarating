@@ -14,12 +14,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
         integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </head>
   <body>
     <script>
       function update_image_resizer(event) {
         console.log('dataset classname', event?.target?.dataset?.classname);
         event.target.parentElement.parentElement.className = `image-resizer ${event?.target?.dataset?.classname ?? ''}`
+      }
+      
+      function getPDF() {
+          var element = document.getElementById("main_wrapper_container");
+          var opt = {
+              jsPDF: {
+                  format: 'a2',
+                  orientation: 'landscape'
+              },
+              html2canvas: {
+                  scale: 3,
+                  letterRendering: true,
+                  useCORS: true,
+                  logging: true
+              },
+              image: {
+                  type: 'jpeg',
+                  quality: 0.95
+              },
+              filename: 'rating_iMAS.pdf'
+          };
+          html2pdf().set(opt).from(element).save();
       }
     </script>
     <div id="app"></div>

@@ -1,9 +1,12 @@
 <template>
-    <div class="flex h-[180px]"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>
+    <div class="flex h-[180px] spinner-wrapper"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>
 </template>
 
 <style>
 
+.spinner-wrapper {
+  --dots-color: #c1b4df;
+}
 .lds-ellipsis {
   display: inline-block;
   position: relative;
@@ -17,7 +20,7 @@
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background: #c1b4df;
+  background: var(--dots-color);
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 .lds-ellipsis div:nth-child(1) {
