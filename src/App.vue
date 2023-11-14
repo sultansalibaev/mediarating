@@ -10,15 +10,6 @@
                 <h2 class="media-h">{{ category_name }}</h2>
                 <p style="margin: 10px 0 14px;">Справка: Тональность определяется от общего числа публикаций</p>
             </div>
-            <button
-                class="btn btn-w-m btn-primary"
-                style="display: flex;align-items: center;justify-content: space-between;min-width: 70px;"
-                v-if="!report_loading"
-                @click="getPDF"
-            >
-                <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" style="width: 13px;height: 13px;margin-right: 6px;"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"></path></svg>
-                <span :class="{exporting_text:report_loading}">PDF</span>
-            </button>
             <div class="flex flex-col">
                 <div class="flex items-center">
                     <i class="fa-solid fa-clock-rotate-left mr-[5px]" :class="{'mt-[-17px]':report_loading}"></i>
@@ -40,6 +31,15 @@
                         :set_list_modal="setDateModal"
                         :callback="updateDate"
                     />
+                    <button
+                        class="btn btn-w-m btn-primary"
+                        style="display: flex;align-items: center;justify-content: space-between;min-width: 70px;margin-left: 10px;"
+                        v-if="!report_loading"
+                        @click="getPDF"
+                    >
+                        <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" style="width: 13px;height: 13px;margin-right: 6px;"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"></path></svg>
+                        <span :class="{exporting_text:report_loading}">PDF</span>
+                    </button>
                 </div>
                 <label class="flex" style="margin: 10px 0 14px;">
                     <input type="checkbox" style="margin: 0 4px 0 0;" v-model="sentiments_by_percent">
@@ -334,6 +334,7 @@ body #app {
     font-size: 16px;
     min-height: calc(100vh - 62.81px);
     background: white;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
 
 .media-h {
